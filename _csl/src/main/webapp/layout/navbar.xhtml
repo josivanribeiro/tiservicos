@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
+	<ui:composition>
+		
+	  <!-- Navigation-->
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+	    <a class="navbar-brand" href="#">
+	    	<h:graphicImage value="img/logo_tiservicos_white.png" />
+	    </a>
+	    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarResponsive">
+	      <h:form id="formNavbar">
+		      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Usuários" style="display: #{userConsoleController.isUserInRole('papel_usuario_ler') ? 'block' : 'none'};">
+		          <p:commandLink styleClass="nav-link" id="lnkUsersConsole" action="#{userConsoleController.goToUsersConsole}" >
+				  	<i class="fa fa-fw fa-users"></i>
+		            <span class="nav-link-text">Usuários</span>
+			      </p:commandLink>          
+		        </li>
+		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Papéis" style="display: #{userConsoleController.isUserInRole('papel_papel_ler') ? 'block' : 'none'};">	          
+		          <p:commandLink styleClass="nav-link" id="lnkRoles" action="#{roleController.goToRoles}" >
+				  	<i class="fa fa-fw fa-user-plus"></i>
+		            <span class="nav-link-text">Papéis</span>
+			      </p:commandLink>		          
+		        </li>
+		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Perfis" style="display: #{userConsoleController.isUserInRole('papel_perfil_ler') ? 'block' : 'none'};">
+		          <p:commandLink styleClass="nav-link" id="lnkProfiles" action="#{profileController.goToProfiles}" >
+				  	<i class="fa fa-fw fa-user-circle"></i>
+		            <span class="nav-link-text">Perfis</span>
+			      </p:commandLink>
+		        </li>
+		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categorias de pergunta" style="display: #{userConsoleController.isUserInRole('papel_categoria_pergunta_ler') ? 'block' : 'none'};">
+		          <p:commandLink styleClass="nav-link" id="lnkQuestionCategories" action="#{questionCategoryController.goToQuestionCategories}" >
+				  	<i class="fa fa-fw fa-tags"></i>
+		            <span class="nav-link-text">Categorias de pergunta</span>
+			      </p:commandLink>		          
+		        </li>
+		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Perguntas" style="display: #{userConsoleController.isUserInRole('papel_pergunta_ler') ? 'block' : 'none'};">
+		          <a class="nav-link" href="#">
+		            <i class="fa fa-fw fa-question-circle-o"></i>
+		            <span class="nav-link-text">Perguntas</span>
+		          </a>
+		        </li>
+		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pagamentos" style="display: #{userConsoleController.isUserInRole('papel_pagamento_ler') ? 'block' : 'none'};">
+		          <a class="nav-link" href="#">
+		            <i class="fa fa-fw fa-credit-card"></i>
+		            <span class="nav-link-text">Pagamentos</span>
+		          </a>
+		        </li>
+		      </ul>
+	      </h:form>
+	      <ul class="navbar-nav sidenav-toggler">
+	        <li class="nav-item">
+	          <a class="nav-link text-center" id="sidenavToggler">
+	            <i class="fa fa-fw fa-angle-left"></i>
+	          </a>
+	        </li>
+	      </ul>
+	      <ul class="navbar-nav ml-auto">
+	        <li class="nav-item">
+	          <h:form id="formLogout">
+	          	<h:commandLink styleClass="nav-link" action="#{loginController.logout}">
+	          		<i class="fa fa-fw fa-sign-out"></i>Logout
+	          	</h:commandLink>
+	          </h:form>	          
+	        </li>
+	      </ul>
+	    </div>
+	  </nav>
+
+	</ui:composition>
+</html>

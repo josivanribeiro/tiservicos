@@ -1,0 +1,72 @@
+<ui:composition template="layout/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="body">
+        
+        <script type="text/javascript">
+	       
+            				
+		</script>
+
+		<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+		  
+		  <ui:include src="layout/navbar.xhtml" />
+		  
+		  <div class="content-wrapper">
+		    <div class="container-fluid">
+		      <div class="card mb-3">
+		        <div class="card-header">
+		          <i class="fa fa-tags"></i> Adicionar / Atualizar Categoria de pergunta
+		        </div>
+		        <div class="card-body">		          
+		          
+			        <h:form id="formUpdateQuestionCategory" method="post">
+			          <f:metadata>
+   						<f:viewParam name="id" value="#{questionCategoryController.questionCategoryIdForm}"/>
+   						<f:event type="preRenderView" listener="#{questionCategoryController.loadById}" />    						
+					  </f:metadata>
+			          <p:messages id="messagesUpdateQuestionCategory" globalOnly="true" for="formUpdateQuestionCategory:messagesUpdateQuestionCategory" showDetail="true" autoUpdate="true" closable="true" />
+			          <div class="form-group">
+			            <label for="formUpdateQuestionCategory:selectQuestionCategoryFatherId">Categoria de pergunta pai</label> <br/>
+			            <h:selectOneMenu id="selectQuestionCategoryFatherId" value="#{questionCategoryController.questionCategoryFatherIdForm}" disabled="#{questionCategoryController.readOnly}">
+  							<f:selectItems value="#{questionCategoryController.questionCategoryFatherIdMap}" />
+  					    </h:selectOneMenu>			            
+			          </div>
+			          <div class="form-group">
+			            <label for="formUpdateQuestionCategory:txtName">Nome</label>
+			            <h:inputText styleClass="form-control" id="txtName" value="#{questionCategoryController.nameForm}" readonly="#{questionCategoryController.readOnly}" />			            
+			          </div>
+			          <div class="form-group">			            
+			             <h:selectBooleanCheckbox id="chktStatus" value="#{questionCategoryController.statusForm}" disabled="#{questionCategoryController.readOnly}" />
+			             <label for="formUpdateQuestionCategory:chktStatus">Ativo</label>			             	
+			          </div>
+			          <div class="button-wrapper float-left mr-3" style="display: #{questionCategoryController.readOnly ? 'none':'block' };">
+			          	<p:commandLink id="buttonSave" styleClass="btn btn-danger btn-block" actionListener="#{questionCategoryController.save}" update="messagesUpdateQuestionCategory, selectQuestionCategoryFatherId, txtName, chktStatus" onclick="hideWithTimer('formUpdateQuestionCategory\\:messagesUpdateQuestionCategory');">
+        					<h:outputText value="Salvar" />
+    			  		</p:commandLink>    			  					          	
+			          </div>
+			          <div class="button-wrapper float-left" style="display: #{questionCategoryController.readOnly ? 'none':'block' };">
+			          	<p:commandLink id="buttonDelete" styleClass="btn btn-danger btn-block" actionListener="#{questionCategoryController.delete}" update="messagesUpdateQuestionCategory, selectQuestionCategoryFatherId, txtName, chktStatus" onclick="hideWithTimer('formUpdateQuestionCategory\\:messagesUpdateQuestionCategory');" rendered="#{not empty questionCategoryController.questionCategoryIdForm}">
+        					<h:outputText value="Excluir" />
+    			  		</p:commandLink>			          	
+			          </div>
+			        </h:form>
+			        
+		        </div>		        
+			  </div>
+		      
+		      
+		    </div>
+		    <!-- /.container-fluid-->
+		    <!-- /.content-wrapper-->
+		    
+		    <ui:include src="layout/footer.xhtml" />
+		    
+		  </div>
+		</body>
+	</ui:define>
+</ui:composition>

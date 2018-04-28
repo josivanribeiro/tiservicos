@@ -1,0 +1,10 @@
+<Context antiJARLocking="true" path="/JNDI">
+    <Resource name="jdbc/tiservicosDb" 
+    		  auth="Container" type="javax.sql.DataSource"
+    		  username="tiservicos"
+    		  password="@TIservicos123"
+    		  driverClassName="com.mysql.jdbc.Driver"
+              maxActive="10" 
+              maxIdle="5" 
+              url="jdbc:mysql://localhost:3306/tiservicos?useSSL=false"/>
+</Context>

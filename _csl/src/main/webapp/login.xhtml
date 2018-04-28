@@ -1,0 +1,48 @@
+<ui:composition template="layout/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="body">
+        
+        <script type="text/javascript">
+					
+			/**
+			 * Handles the login ajax request.
+			 */
+			function handleLoginRequest (xhr, status, args) {
+		        if (args.isLogged) {
+		        	redirectTo (args.redirectToPage);
+		        }
+		    }
+				
+		</script>
+
+		<body class="bg-dark">
+		  <div class="container">
+		    <div class="card card-login mx-auto mt-5">
+		      <div class="card-header"><h:graphicImage value="img/logo_tiservicos_black.png" /></div>
+		      <div class="card-body">
+		        <h:form id="formLogin" method="post">
+		        <p:messages id="messagesLogin" globalOnly="true" for="formLogin:messagesLogin" showDetail="true" autoUpdate="true" closable="true" />
+		          <div class="form-group">
+		            <label for="formLogin:txtEmail">Email</label>
+		            <h:inputText id="txtEmail" value="#{loginController.emailForm}" maxlength="100" styleClass="form-control" />
+		          </div>
+		          <div class="form-group">
+		            <label for="formLogin:txtPwd">Senha</label>
+		            <h:inputSecret id="txtPwd" value="#{loginController.pwdForm}" maxlength="20" styleClass="form-control" />
+		          </div>
+		          <p:commandLink id="buttonLogin" styleClass="btn btn-danger btn-block" actionListener="#{loginController.doLogin}" update="messagesLogin, txtEmail, txtPwd" oncomplete="handleLoginRequest (xhr, status, args)" onclick="hideWithTimer('formLogin\\:messagesLogin');submitWithTimer('formLogin');">
+        			<h:outputText value="Login" />
+    			  </p:commandLink>
+		        </h:form>
+		       </div>
+		    </div>
+		  </div>
+		</body>
+		  
+    </ui:define>
+</ui:composition>

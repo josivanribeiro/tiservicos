@@ -1,0 +1,75 @@
+<ui:composition template="layout/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="body">
+        
+        <script type="text/javascript">
+               
+           
+		</script>
+
+		<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+		  
+		  <ui:include src="layout/navbar.xhtml" />
+		  
+		  <div class="content-wrapper">
+		    <div class="container-fluid">
+		      <div class="card mb-3">
+		        <div class="card-header">
+		          <i class="fa fa-users"></i> Adicionar / Atualizar Usuário
+		        </div>
+		        <div class="card-body">		          
+		          
+			        <h:form id="formUpdateUserConsole" method="post">
+			          <f:metadata>
+   						<f:viewParam name="id" value="#{userConsoleController.userConsoleIdForm}"/>
+   						<f:event type="preRenderView" listener="#{userConsoleController.loadById}" />    						
+					  </f:metadata>
+			          <p:messages id="messagesUpdateUserConsole" globalOnly="true" for="formUpdateUserConsole:messagesUpdateUserConsole" showDetail="true" autoUpdate="true" closable="true" />
+			          <div class="form-group">
+			            <label for="formUpdateUserConsole:txtEmail">Email</label>
+			            <h:inputText styleClass="form-control" id="txtEmail" value="#{userConsoleController.emailForm}" readonly="#{userConsoleController.readOnly}" />			            
+			          </div>
+			          <div class="form-group">			            
+			             <label for="formUpdateUserConsole:txtPwd">Senha</label>
+			             <h:inputSecret styleClass="form-control" id="txtPwd" value="#{userConsoleController.pwdForm}" readonly="#{userConsoleController.readOnly}" />
+			          </div>
+			          <div class="form-group">			             						 
+						 <h:selectManyCheckbox layout="pageDirection" id="chksProfile" value="#{userConsoleController.profileIdArr}">
+   							<f:selectItems value="#{userConsoleController.profileValue}" />
+   						 </h:selectManyCheckbox>						 
+			          </div>			          
+			          <div class="form-group">			            
+			             <h:selectBooleanCheckbox id="chktStatus" value="#{userConsoleController.statusForm}" disabled="#{userConsoleController.readOnly}" />
+			             <label for="formUpdateUserConsole:chktStatus">Ativo</label>			             	
+			          </div>
+			          <div class="button-wrapper float-left mr-3" style="display: #{userConsoleController.readOnly ? 'none':'block' };">
+			          	<p:commandLink id="buttonSave" styleClass="btn btn-danger btn-block" actionListener="#{userConsoleController.save}" update="messagesUpdateUserConsole, txtEmail, txtPwd, chksProfile" onclick="hideWithTimer('formUpdateUserConsole\\:messagesUpdateUserConsole');">
+        					<h:outputText value="Salvar" />
+    			  		</p:commandLink>    			  					          	
+			          </div>
+			          <div class="button-wrapper float-left" style="display: #{userConsoleController.readOnly ? 'none':'block' };">
+			          	<p:commandLink id="buttonDelete" styleClass="btn btn-danger btn-block" actionListener="#{userConsoleController.delete}" update="messagesUpdateUserConsole, txtEmail, txtPwd, chksProfile" onclick="hideWithTimer('formUpdateUserConsole\\:messagesUpdateUserConsole');resetCheckboxes ('chkProfileId');" rendered="#{not empty userConsoleController.userConsoleIdForm}">
+        					<h:outputText value="Excluir" />
+    			  		</p:commandLink>
+			          </div>
+			        </h:form>
+			        
+		        </div>		        
+			  </div>
+		      
+		      
+		    </div>
+		    <!-- /.container-fluid-->
+		    <!-- /.content-wrapper-->
+		    
+		    <ui:include src="layout/footer.xhtml" />
+		    
+		  </div>
+		</body>
+	</ui:define>
+</ui:composition>

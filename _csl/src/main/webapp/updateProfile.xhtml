@@ -1,0 +1,70 @@
+<ui:composition template="layout/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="body">
+        
+        <script type="text/javascript">
+	       
+	                    				
+		</script>
+
+		<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+		  
+		  <ui:include src="layout/navbar.xhtml" />
+		  
+		  <div class="content-wrapper">
+		    <div class="container-fluid">
+		      <div class="card mb-3">
+		        <div class="card-header">
+		          <i class="fa fa-user-circle"></i> Adicionar / Atualizar Perfil
+		        </div>
+		        <div class="card-body">		          
+		          
+			        <h:form id="formUpdateProfile" method="post">
+			          <f:metadata>
+   						<f:viewParam name="id" value="#{profileController.profileIdForm}"/>
+   						<f:event type="preRenderView" listener="#{profileController.findAll}" />
+   						<f:event type="preRenderView" listener="#{profileController.findAllRole}" />
+   						<f:event type="preRenderView" listener="#{profileController.loadById}" />
+					  </f:metadata>
+			          <p:messages id="messagesUpdateProfile" globalOnly="true" for="formUpdateProfile:messagesUpdateProfile" showDetail="true" autoUpdate="true" closable="true" />
+			          <div class="form-group">
+			            <label for="formUpdateProfile:txtName">Nome</label>
+			            <h:inputText styleClass="form-control" id="txtName" value="#{profileController.nameForm}" readonly="#{profileController.readOnly}" />			            
+			          </div>
+			          <div class="form-group">			            
+			             <p:dataList id="dataListRoles" value="#{profileController.roleVOList}" var="roleVO" type="ordered" rendered="#{not empty profileController.roleVOList}">
+						 	<input type="checkbox" id="chkRoleId" name="chkRoleId" class="mr-2" value="#{roleVO.roleId}" checked="#{roleVO.selected ? 'checked' : ''}" disabled="#{profileController.readOnly ? 'disabled':''}" />
+							<h:outputLabel id="labelRoleChild" for="chkRoleId" value="#{roleVO.name}" />
+						 </p:dataList>
+			          </div>
+			          <div class="button-wrapper float-left mr-3" style="display: #{profileController.readOnly ? 'none':'block' };">
+			          	<p:commandLink id="buttonSave" styleClass="btn btn-danger btn-block" actionListener="#{profileController.save}" update="messagesUpdateProfile, txtName, dataListRoles" onclick="hideWithTimer('formUpdateProfile\\:messagesUpdateProfile');">
+        					<h:outputText value="Salvar" />
+    			  		</p:commandLink>    			  					          	
+			          </div>
+			          <div class="button-wrapper float-left" style="display: #{profileController.readOnly ? 'none':'block' };">
+			          	<p:commandLink id="buttonDelete" styleClass="btn btn-danger btn-block" actionListener="#{profileController.delete}" update="messagesUpdateProfile, txtName, dataListRoles" onclick="hideWithTimer('formUpdateProfile\\:messagesUpdateProfile');resetCheckboxes ('chkRoleId');" rendered="#{not empty profileController.profileIdForm}">
+        					<h:outputText value="Excluir" />
+    			  		</p:commandLink>			          	
+			          </div>
+			        </h:form>
+			        
+		        </div>		        
+			  </div>
+		      
+		      
+		    </div>
+		    <!-- /.container-fluid-->
+		    <!-- /.content-wrapper-->
+		    
+		    <ui:include src="layout/footer.xhtml" />
+		    
+		  </div>
+		</body>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,62 @@
+<ui:composition template="layout/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="body">
+        
+        <script type="text/javascript">
+	       
+            				
+		</script>
+
+		<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+		  
+		  <ui:include src="layout/navbar.xhtml" />
+		  
+		  <div class="content-wrapper">
+		    <div class="container-fluid">
+		      <div class="card mb-3">
+		        <div class="card-header">
+		          <i class="fa fa-user-plus"></i> Adicionar / Atualizar Papel
+		        </div>
+		        <div class="card-body">		          
+		          
+			        <h:form id="formUpdateRole" method="post">
+			          <f:metadata>
+   						<f:viewParam name="id" value="#{roleController.roleIdForm}"/>
+   						<f:event type="preRenderView" listener="#{roleController.loadById}" />    						
+					  </f:metadata>
+			          <p:messages id="messagesUpdateRole" globalOnly="true" for="formUpdateRole:messagesUpdateRole" showDetail="true" autoUpdate="true" closable="true" />
+			          <div class="form-group">
+			            <label for="formUpdateRole:txtName">Nome</label>
+			            <h:inputText styleClass="form-control" id="txtName" value="#{roleController.nameForm}" readonly="#{roleController.readOnly}" />			            
+			          </div>
+			          <div class="button-wrapper float-left mr-3" style="display: #{roleController.readOnly ? 'none':'block' };">
+			          	<p:commandLink id="buttonSave" styleClass="btn btn-danger btn-block" actionListener="#{roleController.save}" update="messagesUpdateRole, txtName" onclick="hideWithTimer('formUpdateRole\\:messagesUpdateRole');">
+        					<h:outputText value="Salvar" />
+    			  		</p:commandLink>    			  					          	
+			          </div>
+			          <div class="button-wrapper float-left" style="display: #{roleController.readOnly ? 'none':'block' };">
+			          	<p:commandLink id="buttonDelete" styleClass="btn btn-danger btn-block" actionListener="#{roleController.delete}" update="messagesUpdateRole, txtName" onclick="hideWithTimer('formUpdateRole\\:messagesUpdateRole');" rendered="#{not empty roleController.roleIdForm}">
+        					<h:outputText value="Excluir" />
+    			  		</p:commandLink>			          	
+			          </div>
+			        </h:form>
+			        
+		        </div>		        
+			  </div>
+		      
+		      
+		    </div>
+		    <!-- /.container-fluid-->
+		    <!-- /.content-wrapper-->
+		    
+		    <ui:include src="layout/footer.xhtml" />
+		    
+		  </div>
+		</body>
+	</ui:define>
+</ui:composition>

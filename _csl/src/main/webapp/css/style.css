@@ -1,0 +1,309 @@
+
+.label-field {
+	font-size: 14px;
+	color: #333;	
+}
+.label-field-login {
+	font-size: 14px;
+	color: #fff;
+}
+.container-profile-img {
+    width: 128px;
+    height: 128px;
+    background-image:url('../../resources/images/student_profile_icon.png');
+    margin-bottom: 16px;         
+}
+.field-container {
+    margin-bottom: 13px;
+    height: 59px;     
+}
+.field-container-default {
+    /* position: relative; */
+    margin-bottom: 17px;
+    /*height: 55px;*/
+}
+.field-container-filter {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 55px;     
+}
+.button-container-filter {
+    margin-top: 38px;
+    margin-bottom: 20px;
+    height: 37px;         
+}
+
+
+.column-container-filter {
+    float: left;
+    height: auto;
+    margin-right: 20px; 
+}
+
+#field-container-datalist {
+    margin-top: 37px;
+    border: 1px solid #ccc;
+    width: 404px;
+}
+
+.field-container-default-checkbox {
+    margin-bottom: 17px;
+	height: 20px;        
+}
+.password-field-container {
+   margin-bottom: 16px;
+   height: 59px;
+   width: 270px;
+}
+
+.button-container {
+    float: left;
+    height: 32px;
+}
+
+.button-container input[type="submit"] {
+	margin-left: 0px;
+}
+
+.button-container-delete {
+    float: right;
+    height: 32px;
+}
+
+.message-container {
+	/*background-color: #999999;*/
+	font-size: 14px;
+    height: 22px;
+    padding: 5px;
+    width: 100%;
+    display: table;
+    margin-bottom: 15px;
+}
+.success-message {
+	display: table-cell;
+    vertical-align: middle;
+	color: #009900;
+}
+.warning-message {
+	display: table-cell;
+    vertical-align: middle;
+	color: #ff6600;
+}
+.error-message {
+	display: table-cell;
+    color: #ff0000;
+}
+
+
+.field-container-filter input[type=text],
+.field-container-filter select,
+.field-container-filter textarea {
+	background-color: #efefef;
+	border: solid 1px #efefef;
+	color: #333;
+	font-size: 14px;
+	width: 180px;    
+}
+.field-container-filter input[type=text]:focus,
+.field-container-filter select:focus,
+.field-container-filter textarea:focus {
+	background-color: #f5f5f5;
+	border: 1px solid #f5f5f5;
+}
+
+.field-container-filter select {
+	width: 186px;
+}
+
+
+#container-search-result table {
+	width: 100%;
+	border-spacing: 0px;
+    border-collapse: none;
+}
+.resultTable {
+	width: 100%;	
+}
+.resultTable th {
+	background-color: #dcdad9;
+	color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    height: 33px;
+}
+.resultTable tbody tr {
+	background-color: #fff;		
+}
+.resultTable td {
+	height: 33px;
+	color: #333333;
+	font-size: 14px;
+	border-bottom: solid 1px #ccc;
+	cursor: pointer;
+}
+#container-search-result table tr {
+	cursor: pointer;
+	background-color: #ffffff;
+}
+
+#container-search-result table tr:hover {
+	background-color: #f1efee;
+}
+#container-button-add {
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	float: right;
+	width: 80px;
+	height: 30px;
+}
+#container-button-remove {
+	margin-right: 10px;
+	margin-top: -15px;
+	float: right;		
+}
+#container-navigation-table {
+	margin-top: 322px;
+	margin-left: 10px;
+	height: 16px;
+	width: 71px;
+}
+#container-button-first,
+#container-button-previous {
+	margin-right: 10px;
+}
+#container-col-form {
+	position: relative;
+	float: left;
+	width: 540px;
+	height: 322px;
+	display: table;	
+}
+#container-form {
+	margin-top: 30px;
+	margin-left: 30px;
+}
+#container-form-website {
+	margin-top: 15px;
+	margin-left: 15px;
+}
+#container-form input[type="text"], 
+#container-form input[type="password"] {
+	width: 320px;
+	height: 30px;
+	color: #999999;
+	font-size: 14px;
+	padding-left: 5px;
+}
+#container-form select {
+   width: 320px;
+   padding: 5px;
+   font-size: 14px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 30px;
+   -webkit-appearance: none;
+   color: #999999;
+}
+
+#checkbox-administrator {
+	float: left;
+	margin-left: -4px;
+}
+#label-administrator {
+	float: left;
+	margin-left: 10px;
+	color: #ffffff;	
+}
+#container-col-table {
+	position: relative;
+	float: right;
+	width: 420px;
+	height: 322px;	
+}
+#container-table-navigation {
+	margin-top: 15px;
+	float: right;
+	margin-right: 30px;
+	height: 16px;
+}
+#container-button-first {
+	float: left;
+	margin-right: 5px;
+}
+#container-button-previous {
+	float: left;
+	margin-right: 5px;
+}
+#container-button-next {
+	float: left;
+	margin-right: 5px;
+}
+#container-button-last {
+	float: left;	
+}
+#container-table {
+	float: left;
+	margin-top: 20px;
+	width: 390px;
+	height: 316px;
+	overflow-y: auto;	
+}
+
+#container-table table {
+	background-color: #e0e3e4;
+	width: 100%;
+}
+
+#container-table table thead {
+	background-color: #acb8c1;
+	height: 30px;	
+}
+#container-table table tr {
+	height: 30px;
+	font-weight: normal;
+}
+#container-table table thead tr td {
+	font-weight: bold;
+}
+#container-table table tr td {
+	padding-left: 5px;
+}
+#container-table .td-status {
+	color: #2db10e;
+	font-weight: bold;
+}
+#container-table .status-positive {
+	color: #2db10e;
+	font-weight: bold;
+}
+#container-table .status-negative {
+	color: #ff0000;
+	font-weight: bold;
+}
+#container-table .tr-sub-header {
+	background-color: #c6cfd5;
+}
+#container-table .tr-total {
+	font-weight: bold;
+}
+#container-table-item-label {
+	float: left;
+	height: 30px;
+}
+#container-table-item-icon-delete {
+	float: right;
+	height: 30px;
+}
+#container-table-item-icon-admin {
+	height: 30px;
+}
+#container-table-item-icon-admin img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.row-item {
+	background-color: #c8cbcf;
+}

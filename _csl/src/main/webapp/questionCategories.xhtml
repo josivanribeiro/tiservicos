@@ -1,0 +1,101 @@
+<ui:composition template="layout/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <ui:define name="body">
+        
+        <script type="text/javascript">
+	       
+            $(document).ready(function() {
+			   	
+				$('.resultTable tr').click( function() {
+					var id = $(this).find('td:first').text().trim();
+					if (parseInt (id) > 0) {
+						redirectTo ('updateQuestionCategory.page?id=' + id);
+					}
+				});
+			   
+		    });		
+			
+				
+		</script>
+
+		<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+		  
+		  <ui:include src="layout/navbar.xhtml" />
+		  
+		  <div class="content-wrapper">
+		    <div class="container-fluid">
+		      <div class="card mb-3">
+		        <div class="card-header">
+		          <i class="fa fa-tags"></i> Categorias de pergunta
+		        </div>
+		        <div class="card-body">		          
+				  <div class="button-wrapper float-left mb-2">          
+				      <h:form id="formButton">
+					      <p:commandLink id="buttonAddQuestionCategory" styleClass="btn btn-danger btn-block" action="#{questionCategoryController.goToAddQuestionCategory}" rendered="#{not questionCategoryController.readOnly}">
+			        	  	<h:outputText value="Adicionar Categoria de pergunta" />
+			    		  </p:commandLink>
+		    		  </h:form>
+	    		  </div>		          
+		          <div class="table-responsive">
+	            	<p:dataTable id="resultTableQuestionCategories" 
+	            		styleClass="resultTable" 
+	            		value="#{questionCategoryController.questionCategoryVOList}" 
+	            		var="questionCategoryVO" 
+	            		rows="4" 
+						paginator="true" 
+						paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink}"
+                        rowsPerPageTemplate="4"
+                        emptyMessage="Nenhum registro foi encontrado.">	            	    
+					    <p:column>
+					        <f:facet name="header">
+					            <h:outputText value="Id" />
+					        </f:facet>
+					        <div align="left">
+					        	<h:outputText value="#{questionCategoryVO.questionCategoryId}" />							        	
+					        </div>
+					    </p:column>
+					    <p:column>
+					        <f:facet name="header">
+					            <h:outputText value="Categoria de pergunta pai" />
+					        </f:facet>
+					        <div align="left">
+					        	<h:outputText value="#{questionCategoryVO.questionCategoryFather.name}" />
+					        </div>
+					    </p:column>
+					    <p:column>
+					        <f:facet name="header">
+					            <h:outputText value="Nome" />
+					        </f:facet>
+					        <div align="left">
+					        	<h:outputText value="#{questionCategoryVO.name}" />
+					        </div>
+					    </p:column>
+					    <p:column>
+					        <f:facet name="header">
+					            <h:outputText value="Status" />
+					        </f:facet>							        
+      							<div align="left">
+				        		<h:outputLabel value="#{questionCategoryVO.status ? 'Ativo' : 'Inativo'}" />
+				        	</div>     															        
+					    </p:column>
+					</p:dataTable>
+		          </div>
+		        </div>		        
+			  </div>
+		      
+		      
+		    </div>
+		    <!-- /.container-fluid-->
+		    <!-- /.content-wrapper-->
+		    
+		    <ui:include src="layout/footer.xhtml" />
+		    
+		  </div>
+		</body>
+	</ui:define>
+</ui:composition>
